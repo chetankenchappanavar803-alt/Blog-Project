@@ -1,13 +1,13 @@
 import appWrite from "../conf/conf";
-import { Client, Account, ID } from 'appwrite'
+import { Client, Account, ID, AppwriteException } from 'appwrite'
 
 export class Authservice {
     client = new Client();
     account;
     constructor() {
         this.client
-            .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-            .setProject('<PROJECT_ID>');
+            .setEndpoint(appWrite.appWriteurl)
+            .setProject(appWrite.appWriteprojectId);
         const account = new Account(this.client)
     }
     async createAccount({ email, password, name }) {
@@ -33,11 +33,11 @@ export class Authservice {
         }
     }
 
-    async currentState () {
+    async currentState (userId) {
         try {
-            return await this.account.get()
+            return await this.account.get(userId)
         } catch (error) {
-            console.log("Not logged in ")
+            alert("Not logged in ")
         }
 
         return null
@@ -52,4 +52,5 @@ export class Authservice {
     }
 }
 
-export default authservice = new Authservice;
+const authservice = new Authservice();
+export default authservice;
