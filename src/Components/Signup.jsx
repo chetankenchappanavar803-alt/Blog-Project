@@ -50,11 +50,11 @@ function Signup() {
                 <form onSubmit={handleSubmit(signup)} className='mt-8'>
                     <div className='space-y-5'>
                         <Input
-                        label = "name"
-                        type = "text"
-                        placeholder = "Enter Your Name"
+                            label="name"
+                            type="text"
+                            placeholder="Enter Your Name"
 
-                        {...register("username",{required:true})}
+                            {...register("username", { required: true })}
                         />
                         <Input
                             label="email"
